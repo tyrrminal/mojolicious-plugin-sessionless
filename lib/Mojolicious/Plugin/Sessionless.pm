@@ -4,9 +4,9 @@ use warnings;
 
 # ABSTRACT: Installs noop handlers to disable Mojolicious sessions
 
-use experimental qw(signatures);
-
 use Mojo::Base 'Mojolicious::Plugin';
+
+use experimental qw(signatures);
 
 sub register($self, $app, $conf) {
   $app->sessions(bless({},'__Sessionless'));
