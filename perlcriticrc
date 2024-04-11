@@ -13,7 +13,7 @@
 [-InputOutput::RequireCheckedSyscalls]
 
 [TestingAndDebugging::RequireUseStrict]
-equivalent_modules = Modern::Perl
+[-TestingAndDebugging::ProhibitNoStrict]
 
 [TestingAndDebugging::RequireUseWarnings]
 equivalent_modules = Modern::Perl
