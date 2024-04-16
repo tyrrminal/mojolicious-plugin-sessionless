@@ -1,62 +1,41 @@
-package Mojolicious::Plugin::Sessionless;
-use v5.26;
-use warnings;
-
-# ABSTRACT: Installs noop handlers to disable Mojolicious sessions
-
-=encoding UTF-8
-
-=head1 NAME
+# NAME
 
 Mojolicious::Plugin::Sessionless - disable Mojolicious sessions
 
-=head1 SYNOPSIS
+# SYNOPSIS
 
     plugin 'Sessionless';
 
     app->session(key => 'value'); #noop
 
-=head1 DESCRIPTION
+# DESCRIPTION
 
-L<Mojolicious::Plugin::Sessionless> is an extremely simple plugin that disables
+[Mojolicious::Plugin::Sessionless](https://metacpan.org/pod/Mojolicious%3A%3APlugin%3A%3ASessionless) is an extremely simple plugin that disables
 Mojolicious's session support, replacing the Session load/save handlers with
-C<noop>s
+`noop`s
 
-=head1 METHODS
+# METHODS
 
-L<Mojolicious::Plugin::Sessionless> inherits all methods from L<Mojolicious::Plugin>
+[Mojolicious::Plugin::Sessionless](https://metacpan.org/pod/Mojolicious%3A%3APlugin%3A%3ASessionless) inherits all methods from [Mojolicious::Plugin](https://metacpan.org/pod/Mojolicious%3A%3APlugin)
 and implements the following new onees
 
-=head2 register
+## register
 
-Register plugin in L<Mojolicious> application. Takes no parameters.
+Register plugin in [Mojolicious](https://metacpan.org/pod/Mojolicious) application. Takes no parameters.
 
-=head2 load
+## load
 
 Load session data. Noop.
 
-=head2 store
+## store
 
 Store session data. Noop.
 
-=cut
+# AUTHOR
 
-use Mojo::Base 'Mojolicious::Plugin';
+Mark Tyrrell `<mark@tyrrminal.dev>`
 
-use experimental qw(signatures);
-
-sub register($self, $app, $conf) {
-  $app->sessions(bless({},'__Sessionless'));
-  { no strict 'refs';
-    *{'__Sessionless::load'} = *{'__Sessionless::store'} = sub{};
-  }
-}
-
-=head1 AUTHOR
-
-Mark Tyrrell C<< <mark@tyrrminal.dev> >>
-
-=head1 LICENSE
+# LICENSE
 
 Copyright (c) 2024 Mark Tyrrell
 
@@ -77,9 +56,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
-=cut
-
-1;
-
-__END__
